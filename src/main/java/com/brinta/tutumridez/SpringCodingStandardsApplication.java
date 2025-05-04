@@ -9,16 +9,12 @@ import org.springframework.context.annotation.Bean;
 import com.brinta.tutumridez.entity.bank.User;
 import com.brinta.tutumridez.repository.UserRepository;
 
-
-
 @SpringBootApplication
 public class SpringCodingStandardsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(SpringCodingStandardsApplication.class, args);
 	}
-	
-	
 
 	@Autowired
 	UserRepository userRepository;
