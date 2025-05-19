@@ -357,5 +357,151 @@
 		<module name="SimplifyBooleanReturn" />
 	</module>
 
+	<!--Avoid Field Injection-->
+	<module name="RegexpSinglelineJava">
+		<property name="format" value="@Autowired\s+private" />
+		<property name="message"
+			value="Avoid field injection; use constructor injection" />
+	</module>
+
+	<!--Block EntityManager Use in Services-->
+	<module name="Regexp">
+		<property name="format" value=".*Service.*EntityManager.*" />
+		<property name="message"
+			value="Avoid using EntityManager directly in services" />
+	</module>
+
+	<!--Disallow use of if, for, or DB terms in controllers-->
+	<module name="Regexp">
+		<property name="format"
+			value=".*Controller.*(if\s*\(|for\s*\(|EntityManager|JpaRepository)" />
+		<property name="message"
+			value="Avoid putting logic or persistence in controllers" />
+	</module>
+
+
+	<!--Disallow Manual Instantiation of Beans-->
+	<module name="RegexpSinglelineJava">
+		<property name="format" value="new\s+.*Service\s*\(" />
+		<property name="message"
+			value="Avoid manual instantiation; use dependency injection" />
+	</module>
+
+
+	<!--Prevent @Entity on abstract or interface-->
+	<module name="Regexp">
+		<property name="format" value="abstract\s+class\s+.*@Entity" />
+		<property name="message" value="Entities must be concrete classes" />
+	</module>
+
+
+	<!--Disallow @Transactional on Controllers-->
+	<module name="Regexp">
+		<property name="format"
+			value="@Transactional\s+public\s+class\s+.*Controller" />
+		<property name="message"
+			value="Do not use @Transactional in Controllers" />
+	</module>
+
+
+	<!--Disallow @Transactional in repository classes-->
+	<module name="Regexp">
+		<property name="format"
+			value="@Transactional\s+public\s+class\s+.*Repository" />
+		<property name="message"
+			value="Repository methods should not manage transactions directly" />
+	</module>
+
+
+	<!--Spring Layer Naming & Structural Convention-->
+	<module name="ClassName">
+		<property name="format" value=".*(Controller|Service|Repository)$" />
+	</module>
+
+
+	<!--Avoid Business Logic in Controllers (Heuristic)-->
+	<module name="Regexp">
+		<property name="format" value=".*Controller.*if\s*\(.*\).*" />
+		<property name="message" value="Move business logic out of controller" />
+	</module>
+
+
+	<!-- Prevent Misplaced Annotations -->
+	<module name="Regexp">
+		<property name="format" value="@Service\s+public\s+class\s+.*Controller" />
+		<property name="message"
+			value="Do not annotate controllers with @Service" />
+	</module>
+
+
+	<!--Disallow Abstract Entities-->
+	<module name="Regexp">
+		<property name="format" value="abstract\s+class\s+.*\s+@Entity" />
+		<property name="message" value="Entities should not be abstract" />
+	</module>
+
+
+	<!--Enforce Transactional Boundaries on Services-->
+	<module name="Regexp">
+		<property name="format" value="public\s+class\s+.*Service" />
+		<property name="message"
+			value="Service classes should declare @Transactional boundaries" />
+	</module>
+
+
+	<!-- Prevent @Transactional on a controller-->
+	<module name="Regexp">
+		<property name="format"
+			value="@Transactional\s+public\s+class\s+.*Controller" />
+		<property name="message" value="Transactions should be in service layer" />
+	</module>
+
+	<!--Disallow Logic in Repositories-->
+	<module name="Regexp">
+		<property name="format" value=".*Repository.*if\s*\(" />
+		<property name="message"
+			value="Business logic not allowed in repository classes" />
+	</module>
+
+	<!--Prevent @Component on Repositories-->
+	<module name="Regexp">
+		<property name="format"
+			value="@Component\s+public\s+class\s+.*Repository" />
+		<property name="message"
+			value="Repositories should use @Repository, not @Component" />
+	</module>
+
+
+	<!--Disallow @Value in Controllers-->
+	<module name="Regexp">
+		<property name="format" value="@Value\s+private\s+.*Controller" />
+		<property name="message" value="Avoid using @Value inside controllers" />
+	</module>
+
+	<!--Bonus: Enforce Exception Naming-->
+	<module name="ClassName">
+		<property name="format" value=".*Exception$" />
+	</module>
+
+	<!--Disallow EntityManager in Services and Controllers-->
+	<module name="Regexp">
+		<property name="format" value="EntityManager" />
+		<property name="message"
+			value="Avoid using EntityManager directly; prefer repositories" />
+	</module>
+
+
+	<!--Enforce Configuration Class Naming-->
+	<module name="ClassName">
+		<property name="format" value=".*Config$" />
+	</module>
+
+	<!--Prevent Unannotated Spring Beans (Heuristic)-->
+	<module name="Regexp">
+		<property name="format" value="public\s+class\s+.*Service" />
+		<property name="message"
+			value="Service classes should be annotated with @Service" />
+	</module>
+
 
 </module>

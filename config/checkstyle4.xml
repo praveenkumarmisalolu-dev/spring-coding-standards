@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN" "https://checkstyle.org/dtds/configuration_1_3.dtd">
+
+<module name="Checker">
+	<!-- Set the tab width to 4 spaces -->
+	<property name="tabWidth" value="4" />
+
+	<!-- Enforce a maximum line length of 120 characters -->
+	<module name="LineLength">
+		<property name="max" value="120" />
+		<property name="ignorePattern" value="^package.*|^import.*" />
+	</module>
+
+	<!-- Ensure files end with a newline -->
+	<module name="NewlineAtEndOfFile" />
+
+	<!-- Disallow usage of tab characters -->
+	<module name="FileTabCharacter">
+		<property name="eachLine" value="true" />
+	</module>
+
+	<!-- Enforce a maximum file length of 2000 lines -->
+	<module name="FileLength">
+		<property name="max" value="2000" />
+	</module>
+
+	<!-- TreeWalker module analyzes the structure of Java code -->
+	<module name="TreeWalker">
+		<!-- Enforce naming conventions -->
+		<module name="TypeName" />
+		<module name="MethodName" />
+		<module name="ParameterName" />
+		<module name="LocalVariableName" />
+		<module name="MemberName" />
+		<module name="ConstantName" />
+
+		<!-- Enforce import order and disallow wildcard imports -->
+		<module name="AvoidStarImport" />
+		<module name="RedundantImport" />
+		<module name="UnusedImports" />
+		<module name="ImportOrder">
+			<property name="ordered" value="true" />
+			<property name="separated" value="true" />
+			<property name="caseSensitive" value="true" />
+			<!--  <property name="sortImportsAlphabetically" value="true"/>-->
+		</module>
+
+		<!-- Enforce proper use of braces -->
+		<module name="LeftCurly" />
+		<module name="RightCurly" />
+		<module name="NeedBraces" />
+		<module name="EmptyBlock" />
+
+		<!-- Enforce whitespace rules -->
+		<module name="WhitespaceAfter" />
+		<module name="WhitespaceAround" />
+		<module name="NoWhitespaceAfter" />
+		<module name="NoWhitespaceBefore" />
+		<module name="ParenPad">
+			<property name="option" value="space" />
+		</module>
+
+		<!-- Enforce Javadoc standards -->
+		<module name="JavadocType" />
+		<module name="JavadocMethod" />
+		<module name="JavadocVariable" />
+		<module name="JavadocStyle" />
+
+		<!-- Enforce modifier order and visibility -->
+		<module name="VisibilityModifier" />
+		<module name="ModifierOrder" />
+		<module name="RedundantModifier" />
+		<module name="DeclarationOrder" />
+		<module name="EmptyLineSeparator" />
+
+		<!-- Enforce coding best practices -->
+		<module name="FinalLocalVariable" />
+		<module name="IllegalThrows">
+			<property name="illegalClassNames"
+				value="java.lang.Exception, java.lang.Throwable" />
+		</module>
+		<module name="EqualsHashCode" />
+		<module name="SimplifyBooleanExpression" />
+		<module name="SimplifyBooleanReturn" />
+		<module name="StringLiteralEquality" />
+		<module name="MultipleVariableDeclarations" />
+		<module name="OneStatementPerLine" />
+		<module name="CovariantEquals" />
+		<module name="NestedIfDepth">
+			<property name="max" value="3" />
+		</module>
+		<module name="NestedTryDepth">
+			<property name="max" value="3" />
+		</module>
+		<module name="NestedForDepth">
+			<property name="max" value="3" />
+		</module>
+		<module name="InnerAssignment" />
+		<module name="EmptyStatement" />
+		<module name="AvoidNestedBlocks" />
+
+		<!-- Enforce annotation usage -->
+		<module name="MissingOverride" />
+		<module name="AnnotationUseStyle">
+			<property name="elementStyle" value="compact" />
+		</module>
+		<module name="AnnotationLocation">
+			<property name="allowSamelineSingleParameterlessAnnotation"
+				value="false" />
+		</module>
+
+		<!-- Enforce array type style -->
+		<module name="ArrayTypeStyle" />
+
+		<!-- Enforce outer type filename match -->
+		<module name="OuterTypeFilename" />
+
+		<!-- Enforce upper case 'L' for long literals -->
+		<module name="UpperEll" />
+
+		<!-- Enforce comments indentation -->
+		<module name="CommentsIndentation">
+			<property name="tokens" value="BLOCK_COMMENT_BEGIN" />
+		</module>
+
+		<!-- Enforce whitespace in type casts -->
+		<module name="TypecastParenPad" />
+
+		<!-- Enforce method parameter padding -->
+		<module name="MethodParamPad" />
+
+		<!-- Enforce generic whitespace rules -->
+		<module name="GenericWhitespace" />
+	</module>
+	<module name="CyclomaticComplexity">
+		<property name="max" value="10" />
+	</module>
+
+	<module name="MagicNumber">
+		<property name="ignoreNumbers" value="-1,0,1" />
+		<property name="ignoreHashCodeMethod" value="true" />
+	</module>
+	<module name="IllegalTokenText">
+		<property name="tokens" value="LITERAL_SYSTEM" />
+		<property name="format" value="System\.out|System\.err" />
+	</module>
+
+	<module name="IllegalImport">
+		<property name="illegalPkgs" value="java.lang.Thread" />
+	</module>
+
+	<module name="TodoComment">
+		<property name="format" value="TODO|FIXME" />
+	</module>
+
+	<module name="ClassDataAbstractionCoupling">
+		<property name="max" value="10" />
+	</module>
+
+	<module name="MethodLength">
+		<property name="max" value="50" />
+	</module>
+
+	<module name="ClassFanOutComplexity">
+		<property name="max" value="20" />
+	</module>
+
+	<module name="PackageName">
+		<property name="format" value="^[a-z]+(\.[a-z][a-z0-9]*)*$" />
+	</module>
+
+
+	<module name="RegexpSinglelineJava">
+		<property name="format" value="System\.out\.println" />
+		<property name="message" value="Avoid System.out.println, use a logger." />
+	</module>
+
+	<module name="RegexpSinglelineJava">
+		<property name="format" value="Runtime\.getRuntime\(\)" />
+		<property name="message"
+			value="Avoid using Runtime.getRuntime() due to security risks." />
+	</module>
+
+
+</module>
